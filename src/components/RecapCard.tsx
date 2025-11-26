@@ -8,11 +8,18 @@ interface RecapCardProps {
 }
 
 export const RecapCard = ({ title, videoUrl, imageUrl, isTextRecap }: RecapCardProps) => {
+  const firstWord = title.split(' ')[0];
+  
   if (isTextRecap) {
     return (
-      <Card className="group overflow-hidden transition-all hover:shadow-lg cursor-pointer border-border/50 hover:border-border">
-        <div className="aspect-video bg-gradient-to-br from-gradient-start to-gradient-end flex items-center justify-center p-6">
+      <Card className="group overflow-hidden transition-all hover:shadow-lg cursor-pointer border-border/50 hover:border-border shadow-none">
+        <div className="aspect-[3/4] bg-gradient-to-br from-gradient-start to-gradient-end flex items-center justify-center p-6 rounded-t-lg">
           <h3 className="font-cursive text-3xl md:text-4xl text-white text-center leading-relaxed">
+            {firstWord}
+          </h3>
+        </div>
+        <div className="p-4 bg-card group-hover:bg-card-hover transition-colors rounded-b-lg">
+          <h3 className="font-medium text-card-foreground line-clamp-2">
             {title}
           </h3>
         </div>
@@ -21,8 +28,8 @@ export const RecapCard = ({ title, videoUrl, imageUrl, isTextRecap }: RecapCardP
   }
 
   return (
-    <Card className="group overflow-hidden transition-all hover:shadow-lg cursor-pointer border-border/50 hover:border-border">
-      <div className="aspect-video bg-muted relative overflow-hidden">
+    <Card className="group overflow-hidden transition-all hover:shadow-lg cursor-pointer border-border/50 hover:border-border shadow-none">
+      <div className="aspect-[3/4] bg-muted relative overflow-hidden rounded-t-lg">
         {imageUrl && (
           <img
             src={imageUrl}
@@ -39,7 +46,7 @@ export const RecapCard = ({ title, videoUrl, imageUrl, isTextRecap }: RecapCardP
           </video>
         )}
       </div>
-      <div className="p-4 bg-card group-hover:bg-card-hover transition-colors">
+      <div className="p-4 bg-card group-hover:bg-card-hover transition-colors rounded-b-lg">
         <h3 className="font-medium text-card-foreground line-clamp-2">
           {title}
         </h3>
