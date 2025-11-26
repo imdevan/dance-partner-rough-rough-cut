@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
-const categories = ["Zouk", "Salsa", "West Coast Swing", "Bachata"];
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+const allCategories = ["Zouk", "Salsa", "West Coast Swing", "Bachata", "Lindy Hop", "Kiz", "Blues"];
 
 export const AnimatedCategoryTitle = () => {
+  const categories = useMemo(() => shuffleArray(allCategories), []);
   const [isHovering, setIsHovering] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -27,7 +37,7 @@ export const AnimatedCategoryTitle = () => {
   };
 
   return (
-    <h1 className="text-2xl font-semibold text-foreground inline-flex items-center gap-2">
+    <h1 className="text-2xl font-semibold text-foreground inline-flex items-center gap-1">
       <span
         className="font-trade-winds inline-block overflow-hidden relative cursor-pointer h-[1.2em] align-middle"
         onMouseEnter={handleMouseEnter}
