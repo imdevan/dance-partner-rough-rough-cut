@@ -37,7 +37,7 @@ export const AnimatedCategoryTitle = () => {
   };
 
   return (
-    <h1 className="text-2xl font-semibold text-foreground inline-flex items-center gap-1">
+    <h1 className="text-2xl font-semibold text-foreground inline-flex items-center gap-0.5">
       <span
         className="font-trade-winds inline-block overflow-hidden relative cursor-pointer h-[1.2em] align-middle"
         onMouseEnter={handleMouseEnter}
