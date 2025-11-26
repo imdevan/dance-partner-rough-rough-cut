@@ -1,6 +1,7 @@
 import { Menu, Filter, List, Activity, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RecapCard } from "@/components/RecapCard";
+import { AnimatedCategoryTitle } from "@/components/AnimatedCategoryTitle";
 import { generateRecaps } from "@/lib/mockData";
 import { useState } from "react";
 
@@ -18,9 +19,7 @@ const Index = () => {
               <Menu className="h-5 w-5" />
             </Button>
             
-            <h1 className="text-2xl font-semibold text-foreground">
-              <span className="font-trade-winds">{category}</span> Recaps
-            </h1>
+            <AnimatedCategoryTitle />
             
             <Button variant="ghost" size="icon" className="hover:bg-muted">
               <Filter className="h-5 w-5" />
