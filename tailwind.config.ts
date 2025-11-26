@@ -65,6 +65,7 @@ export default {
       },
       fontFamily: {
         cursive: ['"Dancing Script"', 'cursive'],
+        'trade-winds': ['"Trade Winds"', 'cursive'],
       },
       borderRadius: {
         lg: "var(--radius)",

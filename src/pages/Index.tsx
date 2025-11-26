@@ -1,4 +1,4 @@
-import { Menu, Filter } from "lucide-react";
+import { Menu, Filter, List, Activity, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RecapCard } from "@/components/RecapCard";
 import { generateRecaps } from "@/lib/mockData";
@@ -19,7 +19,7 @@ const Index = () => {
             </Button>
             
             <h1 className="text-2xl font-semibold text-foreground">
-              {category} Recaps
+              <span className="font-trade-winds">{category}</span> Recaps
             </h1>
             
             <Button variant="ghost" size="icon" className="hover:bg-muted">
@@ -30,7 +30,7 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 pb-24">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {recaps.map((recap) => (
             <RecapCard
@@ -43,6 +43,23 @@ const Index = () => {
           ))}
         </div>
       </main>
+
+      {/* Bottom Tab Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm border-t border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-around py-3">
+            <Button variant="ghost" size="icon" className="hover:bg-muted">
+              <List className="h-5 w-5" />
+            </Button>
+            <Button variant="ghost" size="icon" className="hover:bg-muted">
+              <Activity className="h-5 w-5" />
+            </Button>
+            <Button variant="ghost" size="icon" className="hover:bg-muted">
+              <Plus className="h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 };
