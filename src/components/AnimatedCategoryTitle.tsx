@@ -27,29 +27,28 @@ export const AnimatedCategoryTitle = () => {
   };
 
   return (
-    <h1 className="text-2xl font-semibold text-foreground">
+    <h1 className="text-2xl font-semibold text-foreground inline-flex items-center gap-2">
       <span
-        className="font-trade-winds inline-block overflow-hidden relative cursor-pointer"
+        className="font-trade-winds inline-block overflow-hidden relative cursor-pointer h-[1.2em] align-middle"
         onMouseEnter={handleMouseEnter}
         style={{ minWidth: "200px" }}
       >
         <span
-          className="inline-block transition-transform duration-300 ease-in-out"
+          className="inline-block transition-transform duration-300 ease-in-out will-change-transform"
           style={{
-            transform: `translateY(-${currentIndex * 100}%)`,
+            transform: `translateY(-${currentIndex * 1.2}em)`,
           }}
         >
           {categories.map((cat, idx) => (
             <span
               key={idx}
-              className="block"
-              style={{ height: "1em", lineHeight: "1em" }}
+              className="block h-[1.2em] leading-[1.2em]"
             >
               {cat}
             </span>
           ))}
         </span>
-      </span>{" "}
+      </span>
       Recaps
     </h1>
   );
