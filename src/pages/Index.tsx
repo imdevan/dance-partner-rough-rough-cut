@@ -46,18 +46,16 @@ const Index = () => {
 
       {/* Bottom Tab Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm border-t border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-around py-3">
-            <Button variant="ghost" size="icon" className="hover:bg-muted">
-              <List className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-muted">
-              <Activity className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover:bg-muted">
-              <Plus className="h-5 w-5" />
-            </Button>
-          </div>
+        <div className="flex items-center justify-around py-3 w-full">
+          <Button variant="ghost" size="icon" className="hover:bg-muted">
+            <List className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon" className="hover:bg-muted">
+            <Activity className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon" className="hover:bg-muted">
+            <Plus className="h-5 w-5" />
+          </Button>
         </div>
       </nav>
     </div>
