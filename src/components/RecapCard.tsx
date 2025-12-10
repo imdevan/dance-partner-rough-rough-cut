@@ -18,11 +18,11 @@ export const RecapCard = ({ title, videoUrl, imageUrl, isTextRecap }: RecapCardP
             {firstWord}
           </h3>
         </div>
-        <div className="p-4 bg-card group-hover:bg-card-hover transition-colors">
-          <h3 className="font-medium text-card-foreground line-clamp-2">
-            {title}
-          </h3>
-        </div>
+      <div className="p-4 bg-card group-hover:bg-card-hover transition-colors">
+        <h3 className="font-medium text-card-foreground line-clamp-2 min-h-[2.5rem]">
+          {title}
+        </h3>
+      </div>
       </Card>
     );
   }
@@ -47,7 +47,7 @@ export const RecapCard = ({ title, videoUrl, imageUrl, isTextRecap }: RecapCardP
         )}
       </div>
       <div className="p-4 bg-card group-hover:bg-card-hover transition-colors">
-        <h3 className="font-medium text-card-foreground line-clamp-2">
+        <h3 className="font-medium text-card-foreground line-clamp-2 min-h-[2.5rem]">
           {title}
         </h3>
       </div>
