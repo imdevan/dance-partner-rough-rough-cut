@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { danceStyles } from "@/lib/mockData";
 
 const shuffleArray = <T,>(array: T[]): T[] => {
   const shuffled = [...array];
@@ -9,31 +10,30 @@ const shuffleArray = <T,>(array: T[]): T[] => {
   return shuffled;
 };
 
-const allCategories = ["Zouk", "Salsa", "West Coast Swing", "Bachata", "Lindy Hop", "Kiz", "Blues"];
+interface AnimatedCategoryTitleProps {
+  initialCategory: string;
+}
 
-export const AnimatedCategoryTitle = () => {
-  const categories = useMemo(() => shuffleArray(allCategories), []);
-  const [isHovering, setIsHovering] = useState(false);
+export const AnimatedCategoryTitle = ({ initialCategory }: AnimatedCategoryTitleProps) => {
+  const categories = useMemo(() => {
+    // Put the initial category first, then shuffle the rest
+    const others = danceStyles.filter(s => s !== initialCategory);
+    return [initialCategory, ...shuffleArray(others)];
+  }, [initialCategory]);
+  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleMouseEnter = () => {
-    setIsHovering(true);
     let index = 0;
     const interval = setInterval(() => {
       index = (index + 1) % categories.length;
       setCurrentIndex(index);
     }, 400);
 
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
       clearInterval(interval);
-      setIsHovering(false);
       setCurrentIndex(0);
     }, 2000);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
   };
 
   return (
