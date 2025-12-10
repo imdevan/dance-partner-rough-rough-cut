@@ -2,12 +2,12 @@ import { Menu, Filter, List, Activity, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RecapCard } from "@/components/RecapCard";
 import { AnimatedCategoryTitle } from "@/components/AnimatedCategoryTitle";
-import { generateRecaps } from "@/lib/mockData";
-import { useState } from "react";
+import { generateRecaps, getRandomDanceStyle } from "@/lib/mockData";
+import { useMemo } from "react";
 
 const Index = () => {
-  const [category] = useState("Zouk");
-  const recaps = generateRecaps(12, category);
+  const initialCategory = useMemo(() => getRandomDanceStyle(), []);
+  const recaps = useMemo(() => generateRecaps(12, initialCategory), [initialCategory]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -19,7 +19,7 @@ const Index = () => {
               <Menu className="h-5 w-5" />
             </Button>
             
-            <AnimatedCategoryTitle />
+            <AnimatedCategoryTitle initialCategory={initialCategory} />
             
             <Button variant="ghost" size="icon" className="hover:bg-muted">
               <Filter className="h-5 w-5" />
