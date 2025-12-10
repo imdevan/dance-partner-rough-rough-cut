@@ -12,9 +12,10 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 interface AnimatedCategoryTitleProps {
   initialCategory: string;
+  onCategoryClick?: () => void;
 }
 
-export const AnimatedCategoryTitle = ({ initialCategory }: AnimatedCategoryTitleProps) => {
+export const AnimatedCategoryTitle = ({ initialCategory, onCategoryClick }: AnimatedCategoryTitleProps) => {
   const categories = useMemo(() => {
     // Put the initial category first, then shuffle the rest
     const others = danceStyles.filter(s => s !== initialCategory);
@@ -41,6 +42,7 @@ export const AnimatedCategoryTitle = ({ initialCategory }: AnimatedCategoryTitle
       <span
         className="font-trade-winds inline-block overflow-hidden relative cursor-pointer h-[1.2em] align-middle"
         onMouseEnter={handleMouseEnter}
+        onClick={onCategoryClick}
         style={{ minWidth: "200px" }}
       >
         <span
