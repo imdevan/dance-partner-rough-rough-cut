@@ -155,22 +155,40 @@ export const generateRecaps = (count: number, category: string = 'Zouk'): Recap[
   return Array.from({ length: count }, (_, i) => {
     const isTextRecap = i % 5 === 0;
     
+    let title: string;
+    if (isTextRecap) {
+      title = faker.helpers.arrayElement([
+        'Remember to stay grounded',
+        'Focus on connection',
+        'Practice makes perfect',
+        'Lead with intention',
+        'Follow with trust',
+        'Maintain the frame',
+        'Listen to the music',
+        'Feel the rhythm',
+        'Embrace the movement',
+        'Dance with joy'
+      ]);
+    } else {
+      const random = Math.random();
+      
+      if (random < 0.2) {
+        // 20% chance: combination of two moves
+        const move1 = faker.helpers.arrayElement(classNames);
+        const move2 = faker.helpers.arrayElement(classNames.filter(m => m !== move1));
+        title = `${move1} into ${move2}`;
+      } else if (random < 0.35) {
+        // 15% chance: add "Variation"
+        title = `${faker.helpers.arrayElement(classNames)} Variation`;
+      } else {
+        // 65% chance: just the class name
+        title = faker.helpers.arrayElement(classNames);
+      }
+    }
+    
     return {
       id: faker.string.uuid(),
-      title: isTextRecap 
-        ? faker.helpers.arrayElement([
-            'Remember to stay grounded',
-            'Focus on connection',
-            'Practice makes perfect',
-            'Lead with intention',
-            'Follow with trust',
-            'Maintain the frame',
-            'Listen to the music',
-            'Feel the rhythm',
-            'Embrace the movement',
-            'Dance with joy'
-          ])
-        : `${category} - ${faker.helpers.arrayElement(classNames)}`,
+      title,
       isTextRecap,
       imageUrl: !isTextRecap ? faker.image.urlLoremFlickr({ category: 'dance' }) : undefined,
       category,
