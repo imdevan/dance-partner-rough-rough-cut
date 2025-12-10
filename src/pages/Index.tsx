@@ -3,11 +3,15 @@ import { Button } from "@/components/ui/button";
 import { RecapCard } from "@/components/RecapCard";
 import { AnimatedCategoryTitle } from "@/components/AnimatedCategoryTitle";
 import { generateRecaps, getRandomDanceStyle } from "@/lib/mockData";
-import { useMemo } from "react";
+import { useState, useMemo } from "react";
 
 const Index = () => {
-  const initialCategory = useMemo(() => getRandomDanceStyle(), []);
-  const recaps = useMemo(() => generateRecaps(12, initialCategory), [initialCategory]);
+  const [category, setCategory] = useState(() => getRandomDanceStyle());
+  const recaps = useMemo(() => generateRecaps(12, category), [category]);
+
+  const handleCategoryClick = () => {
+    setCategory(getRandomDanceStyle());
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -19,7 +23,10 @@ const Index = () => {
               <Menu className="h-5 w-5" />
             </Button>
             
-            <AnimatedCategoryTitle initialCategory={initialCategory} />
+            <AnimatedCategoryTitle 
+              initialCategory={category} 
+              onCategoryClick={handleCategoryClick}
+            />
             
             <Button variant="ghost" size="icon" className="hover:bg-muted">
               <Filter className="h-5 w-5" />

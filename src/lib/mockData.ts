@@ -172,12 +172,20 @@ export const generateRecaps = (count: number, category: string = 'Zouk'): Recap[
     } else {
       const random = Math.random();
       
-      if (random < 0.2) {
-        // 20% chance: combination of two moves
+      if (random < 0.25) {
+        // 25% chance: combination of two moves with varied patterns
         const move1 = faker.helpers.arrayElement(classNames);
         const move2 = faker.helpers.arrayElement(classNames.filter(m => m !== move1));
-        title = `${move1} into ${move2}`;
-      } else if (random < 0.35) {
+        const pattern = faker.helpers.arrayElement([
+          `${move1} into ${move2}`,
+          `${move1} to ${move2}`,
+          `${move1} with ${move2}`,
+          `${move1} & ${move2}`,
+          `${move1} + ${move2} Combo`,
+          `From ${move1} to ${move2}`,
+        ]);
+        title = pattern;
+      } else if (random < 0.40) {
         // 15% chance: add "Variation"
         title = `${faker.helpers.arrayElement(classNames)} Variation`;
       } else {
