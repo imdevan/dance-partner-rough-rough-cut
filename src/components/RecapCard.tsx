@@ -9,7 +9,7 @@ interface RecapCardProps {
 
 export const RecapCard = ({ title, videoUrl, imageUrl, isTextRecap }: RecapCardProps) => {
   const firstWord = title.split(' ')[0];
-  
+
   if (isTextRecap) {
     return (
       <Card className="group overflow-hidden transition-all hover:shadow-lg cursor-pointer shadow-none border-0 h-full flex flex-col">
@@ -34,7 +34,7 @@ export const RecapCard = ({ title, videoUrl, imageUrl, isTextRecap }: RecapCardP
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover transition-transform group-hover:scale-105"
+            className="w-[200%] h-[200%] object-center transition-transform group-hover:scale-105 blur-2xl"
           />
         )}
         {videoUrl && (
