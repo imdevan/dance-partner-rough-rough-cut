@@ -151,10 +151,11 @@ export const getRandomDanceStyle = (): string => {
 
 export const generateRecaps = (count: number, category: string = 'Zouk'): Recap[] => {
   const classNames = styleSpecificClasses[category] || styleSpecificClasses["Zouk"];
-  
+
   return Array.from({ length: count }, (_, i) => {
-    const isTextRecap = i % 5 === 0;
-    
+    const isTextRecap = false;
+    // const isTextRecap = i % 5 === 0;
+
     let title: string;
     if (isTextRecap) {
       title = faker.helpers.arrayElement([
@@ -171,7 +172,7 @@ export const generateRecaps = (count: number, category: string = 'Zouk'): Recap[
       ]);
     } else {
       const random = Math.random();
-      
+
       if (random < 0.25) {
         // 25% chance: combination of two moves with varied patterns
         const move1 = faker.helpers.arrayElement(classNames);
@@ -193,12 +194,12 @@ export const generateRecaps = (count: number, category: string = 'Zouk'): Recap[
         title = faker.helpers.arrayElement(classNames);
       }
     }
-    
+
     return {
       id: faker.string.uuid(),
       title,
       isTextRecap,
-      imageUrl: !isTextRecap ? faker.image.urlLoremFlickr({ category: 'dance' }) : undefined,
+      imageUrl: faker.image.urlLoremFlickr({ category: 'dance' }),
       category,
     };
   });
